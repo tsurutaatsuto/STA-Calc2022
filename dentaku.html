@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<style>
+		table{
+			width: 550px;
+			height: 650px;
+			border: solid 1px #dcdcdca4;
+			border-right: solid 4px #dcdcdca4;
+			border-bottom: solid 4px #dcdcdca4;
+			border-radius: 10px;
+			padding: 8px;
+			margin: 20px;
+		}
+		input {
+			width: 110px;
+			height: 110px;
+			font-size: x-large;
+			background-color: #dcdcdca4;
+			border: none;
+			border-radius: 90px;
+			outline: none;
+		}
+		.display {
+			width: 500px;
+			text-align: right;
+			background: #ffffff;
+			border-top: solid #dcdcdca4 6px;
+			border-bottom: solid #dcdcdca4 6px;
+			border-right: solid #dcdcdca4 7px;
+			border-left: solid #dcdcdca4 7px;
+		}
+		.kigou {
+			background-color: #bbffbb
+		}
+		.kigou:hover {
+			background-color: #2e8b57
+		}
+		.operator {
+			background-color: #87cefa;
+		}
+		.equal {
+			background-color: #b6b6b6;
+		}
+		input:hover {
+			background: #747373b9;
+		}
+		.display:hover {
+			background: #ffffff;
+		}
+		.operator:hover {
+			background: #339cdd;
+		}
+		input:active {
+			background:  #5a5a5a;
+		}
+		.operator:active {
+			background: #2c80b4;
+		}
+	</style>
+	<script>
+		function get_calc(btn) {
+			if(btn.value == "=") {
+				document.dentaku.display.value = eval(document.dentaku.display.value);
+			} else if (btn.value == "C") {
+				document.dentaku.display.value = "";
+			} else if (btn.value == "S<=>D"){ 
+				
+			} else {
+				if (btn.value == "×") {
+					btn.value = "*";
+				} else if (btn.value == "÷") {
+					btn.value = "/";
+				} else if (btn.value == "^□"){
+					btn.value = "**";
+				} else if (btn.value == "□/□"){
+					btn.value = "/";
+				}
+				document.dentaku.display.value += btn.value;
+				document.dentaku.multi_btn.value = "×";
+				document.dentaku.div_btn.value = "÷";
+				document.dentaku.squared_btn.value = "^□";
+				document.dentaku.bunsu_btn.value = "□/□";
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="dentaku">
+		<table>
+			<tr>
+				<td colspan="4">
+					<input type="text" class="display" name="display" value="" disabled>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="button" value="^□" class="kigou" name="squared_btn" onclick="get_calc(this)"></td>
+				<td><input type="button" value="□/□" class="kigou" name="bunsu_btn" onclick="get_calc(this)"></td>
+				<td><input type="button" value="." class="kigou" onclick="get_calc(this)"></td>
+				<td><input type="button" value="C" class="operator" onclick="get_calc(this)"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="7" onclick="get_calc(this)"></td>
+				<td><input type="button" value="8" onclick="get_calc(this)"></td>
+				<td><input type="button" value="9" onclick="get_calc(this)"></td>
+				<td><input type="button" value="÷" class="operator" name="div_btn" onclick="get_calc(this)"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="4" onclick="get_calc(this)"></td>
+				<td><input type="button" value="5" onclick="get_calc(this)"></td>
+				<td><input type="button" value="6" onclick="get_calc(this)"></td>
+				<td><input type="button" value="×" class="operator" name="multi_btn" onclick="get_calc(this)"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="1" onclick="get_calc(this)"></td>
+				<td><input type="button" value="2" onclick="get_calc(this)"></td>
+				<td><input type="button" value="3" onclick="get_calc(this)"></td>
+				<td><input type="button" value="-" class="operator" onclick="get_calc(this)"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="0" class="zero" onclick="get_calc(this)"></td>
+				<td></td>
+				<td><input type="button" value="=" class="equal" onclick="get_calc(this)"></td>
+				<td><input type="button" value="+" class="operator" onclick="get_calc(this)"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
